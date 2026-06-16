@@ -147,4 +147,4 @@ Exact numbers depend on the scoping answers (expert availability, source conditi
 
 If we get the gold test set, the guidelines, and a synthetic-data pilot right in the first stretch, everything afterward gets much easier. Happy to walk any of this through live.
 
-— Sachin
+

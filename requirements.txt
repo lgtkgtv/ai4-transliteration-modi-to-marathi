@@ -1,0 +1,28 @@
+# Core ML framework — install with CUDA 12.8 wheel (see README for exact command)
+# torch==2.11.0+cu128
+# torchvision==0.26.0+cu128
+
+# HuggingFace ecosystem
+transformers==5.12.1
+datasets==5.0.0
+accelerate==1.14.0
+huggingface-hub==1.19.0
+peft==0.19.1
+bitsandbytes==0.49.2
+safetensors==0.8.0
+tokenizers==0.22.2
+
+# Evaluation
+evaluate==0.4.6
+jiwer==4.0.0
+
+# Image processing
+opencv-python==4.13.0.92
+Pillow==12.2.0
+
+# Demo UI
+gradio==6.18.0
+
+# Data
+numpy==2.4.4
+pandas==3.0.3

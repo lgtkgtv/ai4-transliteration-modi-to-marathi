@@ -144,4 +144,4 @@ When you have time, I'd value your input on:
 
 Thank you — I'd rather invest this alignment time now than discover gaps later.
 
-— Sachin
+-sachin

@@ -1,0 +1,42 @@
+# ── Claude CLI (project-specific memory and settings) ─────────────────────────
+# These files are used by Claude Code CLI during development.
+# They are not needed to run or reproduce the project.
+memory/
+.claude/
+**/.claude/
+
+# ── Python environment ────────────────────────────────────────────────────────
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+
+# ── Large model files (hosted on HuggingFace Hub instead) ────────────────────
+# Download automatically via app.py or scripts/05_train_qlora.py
+models/
+
+# ── Dataset files (recreated by scripts/02_prepare_splits.py) ────────────────
+# MoDeTrans and SynthMoDe are downloaded from HuggingFace by the scripts.
+data/
+
+# ── HuggingFace and pip caches ────────────────────────────────────────────────
+.cache/
+*.lock
+
+# ── OS and editor noise ───────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+.idea/
+.vscode/
+*.Zone.Identifier
+
+# ── Temporary and log files ───────────────────────────────────────────────────
+*.log
+/tmp/
