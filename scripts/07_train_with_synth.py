@@ -166,8 +166,13 @@ trainer = Trainer(
     data_collator=collate_fn,
 )
 
-print(f"\nStarting FULL TRAINING — real + synthetic, {N_EPOCHS} epochs...\n")
-trainer.train()
+checkpoints = sorted(Path(OUTPUT_DIR).glob("checkpoint-*"))
+resume_from = str(checkpoints[-1]) if checkpoints else None
+if resume_from:
+    print(f"\nResuming from {resume_from}...\n")
+else:
+    print(f"\nStarting FULL TRAINING — real + synthetic, {N_EPOCHS} epochs...\n")
+trainer.train(resume_from_checkpoint=resume_from)
 
 # Save adapter
 out = Path(OUTPUT_DIR) / "final_adapter"
