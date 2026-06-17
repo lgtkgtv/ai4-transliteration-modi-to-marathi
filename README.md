@@ -2,9 +2,8 @@
 
 **Turn handwritten Modi-script documents into readable Marathi (Devanagari).**
 
-<!-- edit: one honest line on why you started this -->
-> I started this to help open up the millions of Modi documents that almost no
-> one can read anymore — assisting the experts who can, not replacing them.
+> I started this project to explore if AI can be effectively used for the
+> Transliteration of the Ancient Modi Script.
 
 ![How it works](assets/pipeline.excalidraw.svg)
 
