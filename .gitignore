@@ -36,7 +36,12 @@ Thumbs.db
 .idea/
 .vscode/
 *.Zone.Identifier
+*:Zone.Identifier
 
 # ── Temporary and log files ───────────────────────────────────────────────────
+logs/
 *.log
 /tmp/
+
+# ── Generated results (reproducible via scripts) ─────────────────────────────
+results/

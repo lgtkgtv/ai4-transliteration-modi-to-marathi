@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="160" viewBox="0 0 800 160">
+  <!-- PLACEHOLDER: replace with a real Excalidraw export -->
+  <!-- Pipeline: Modi scan → clean up → AI draft → expert check → Marathi (corrections feed back) -->
+  <rect width="800" height="160" fill="#f8f8f8" rx="8"/>
+  <text x="400" y="30" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#888">[ pipeline diagram — replace with Excalidraw export ]</text>
+
+  <rect x="20"  y="55" width="120" height="50" rx="6" fill="#fff" stroke="#aaa"/>
+  <text x="80"  y="85" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#333">Modi scan</text>
+
+  <text x="155" y="83" font-family="sans-serif" font-size="18" fill="#aaa">→</text>
+
+  <rect x="175" y="55" width="120" height="50" rx="6" fill="#fff" stroke="#aaa"/>
+  <text x="235" y="85" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#333">Clean up</text>
+
+  <text x="310" y="83" font-family="sans-serif" font-size="18" fill="#aaa">→</text>
+
+  <rect x="330" y="55" width="120" height="50" rx="6" fill="#fff" stroke="#aaa"/>
+  <text x="390" y="85" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#333">AI draft</text>
+
+  <text x="465" y="83" font-family="sans-serif" font-size="18" fill="#aaa">→</text>
+
+  <rect x="485" y="55" width="120" height="50" rx="6" fill="#fff" stroke="#aaa"/>
+  <text x="545" y="85" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#333">Expert check</text>
+
+  <text x="620" y="83" font-family="sans-serif" font-size="18" fill="#aaa">→</text>
+
+  <rect x="640" y="55" width="120" height="50" rx="6" fill="#e8f5e9" stroke="#81c784"/>
+  <text x="700" y="85" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#2e7d32">Marathi</text>
+
+  <!-- corrections feed back arrow -->
+  <path d="M 545 105 Q 545 140 390 140 Q 235 140 235 105" fill="none" stroke="#aaa" stroke-dasharray="4"/>
+  <text x="390" y="155" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#aaa">corrections feed back as training data</text>
+</svg>
