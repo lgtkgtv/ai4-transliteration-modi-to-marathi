@@ -45,3 +45,6 @@ logs/
 
 # ── Generated results (reproducible via scripts) ─────────────────────────────
 results/
+
+# ── Agent/planning briefs (not part of the public repo) ──────────────────────
+RUNBOOK-reorg.md
