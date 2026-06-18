@@ -14,7 +14,6 @@
 | Run it on a Modi image | [`docs/quickstart.md`](docs/quickstart.md) |
 | Know where the data comes from | [`docs/data.md`](docs/data.md) |
 | Understand the model | [`docs/model.md`](docs/model.md) |
-| See an example | [`examples/`](examples/) |
 
 ## What this is (and isn't)
 
