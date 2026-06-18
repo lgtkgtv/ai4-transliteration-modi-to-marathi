@@ -45,6 +45,18 @@ CONTRIBUTING.md              # How to contribute data, the human-in-the-loop rul
 | Fine-tuned — real data only (MoDeTrans, 3 epochs) | 0.332 |
 | Fine-tuned — real + synthetic (MoDeTrans + SynthMoDe, 2 epochs) | 0.328 |
 
+**65% CER reduction** from zero-shot to fine-tuned. Quality tier breakdown (synth model, 204 test images):
+
+| Tier | CER range | Images | Meaning |
+|---|---|---|---|
+| Perfect | 0.0 | 3 | Accept as-is |
+| Excellent | < 0.10 | 5 | Tiny touch-up |
+| Good | 0.10–0.20 | 38 | Minor edits |
+| **Fair** | **0.20–0.40** | **109** | **Usable first draft** ← majority |
+| Poor | 0.40–0.70 | 44 | Heavy correction |
+| Very poor | 0.70–1.0 | 3 | Nearly all wrong |
+| Loops | > 1.0 | 2 | Hallucination; discard |
+
 **Dominant error patterns** (from `scripts/08_error_analysis.py`):
 - Deletions 46% of errors — model skips characters, especially anusvāra (ं, ~240 drops per test run)
 - Vowel length confusion: ी ↔ ि, ू ↔ ु (top substitution pairs)
