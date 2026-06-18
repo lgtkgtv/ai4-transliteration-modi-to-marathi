@@ -50,26 +50,24 @@ Dakshina and Aksharantar Marathi text can be rendered through Modi fonts (Marath
 
 ---
 
-## Licensing summary
+## Licensing rules — always follow the safe path
 
-| Source | Train on it? | Publish model trained on it? | Note |
+These are hard rules, not guidelines. When in doubt, don't use the dataset.
+
+| Source | Use for training? | Publish model? | Rule |
 |---|---|---|---|
-| MoDeTrans / SynthMoDe | Yes | Yes | Cite arXiv:2503.13060 |
-| MODI-HChar / MODI-HHDoc | Yes | Yes (if CC BY 4.0 confirmed) | **Verify licence on Mendeley page first**; credit Deshmukh & Kolhe |
-| Jadhav & Inamdar (IEEE) | Only with subscription | Check licence | Subscription-gated |
-| Aksharantar (mined) | Yes | Yes | CC0 — no restrictions |
-| Aksharantar (manual) | Yes | Yes | CC BY — attribution only |
-| Dakshina | **Word list only** (see below) | N/A | CC BY-SA 4.0 ShareAlike — avoid for model training |
+| MoDeTrans / SynthMoDe | ✅ Yes | ✅ Yes | Cite arXiv:2503.13060 |
+| MODI-HChar / MODI-HHDoc | ✅ Only after confirming CC BY 4.0 on Mendeley | ✅ Yes (CC BY) | **Must verify licence on Mendeley page before any use. Do not assume.** |
+| Jadhav & Inamdar (IEEE) | ⛔ No | ⛔ No | Subscription-gated; licence unclear — skip |
+| Aksharantar (mined, CC0) | ✅ Yes | ✅ Yes | No restrictions — preferred for synthetic training data |
+| Aksharantar (manual, CC BY) | ✅ Yes | ✅ Yes | Attribution required |
+| Dakshina (CC BY-SA 4.0) | ⛔ **Never for training** | ⛔ N/A | ShareAlike copyleft — word list use at inference only |
 
-**Dakshina CC BY-SA 4.0 — use only for post-processing word list (Stream A1), not for training.**
-The ShareAlike clause means any derivative work must carry the same licence.
-Whether trained model weights count as a derivative work is legally unsettled.
-Safe path: extract a Marathi word list from Dakshina and use it at inference time;
-use Aksharantar (CC0/CC-BY) for any synthetic training image generation instead.
+**Dakshina rule:** Extract a Marathi word list and use it at inference time (post-processing corrector). Never add Dakshina text to training data or synthetic image generation. Use Aksharantar instead for anything that touches the training pipeline.
 
-If we publish our own dataset it must be built from: our own scans + expert labels,
-synthetic data from CC-licensed text, and CC-licensed sources.
-Record provenance per item from the start.
+**MODI-HChar / MODI-HHDoc gate:** Before downloading or using either dataset, open the Mendeley page, read the licence field, and record it in `docs/data.md`. If the licence is not CC BY 4.0 or more permissive, stop and do not use.
+
+**Publishing rule:** Any dataset we publish must consist entirely of: our own scans + expert labels, synthetic data from CC0/CC-BY sources, and other CC-licensed sources. Record provenance per image from the start. MODI-HChar and MODI-HHDoc (even if CC BY) must not be included in any redistributed dataset — they are inputs to our training pipeline only.
 
 ---
 
@@ -77,7 +75,7 @@ Record provenance per item from the start.
 
 ```
 Pretrain vision encoder  ◄── MODI-HChar (Modi letter shapes)
-Bulk synthetic pairs     ◄── Dakshina/Aksharantar Marathi text → render → synthetic Modi images
+Bulk synthetic pairs     ◄── Aksharantar Marathi text → render → synthetic Modi images (Dakshina: word list only)
 Core training + eval     ◄── MoDeTrans (real image → Devanagari)  ⭐
 Grow real data           ◄── MODI-HHDoc raw pages + expert labels + contributed scans
 Gold test set            ◄── our experts, locked, never used for training

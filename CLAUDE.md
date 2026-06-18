@@ -108,9 +108,13 @@ Model: Qwen2.5-VL-3B-Instruct base, QLoRA adapter (rank 32, 4-bit NF4), trained 
 
 **Metrics:** CER (Character Error Rate) is primary; BLEU secondary. Always measure on *real* held-out documents, not only synthetic.
 
-## Licensing constraint
+## Licensing rules — always follow the safe path
 
-If we publish a dataset, it must be built from: our own scans + expert labels, synthetic data from CC-licensed text, and CC-licensed sources. **MODI-HChar and MODI-HHDoc are research-only and cannot be redistributed.** Track provenance per item from the start.
+- **Dakshina (CC BY-SA 4.0): never use for training.** Use it as a Marathi word list at inference time only. Use Aksharantar (CC0/CC-BY) for any synthetic training data generation.
+- **MODI-HChar / MODI-HHDoc: verify licence on the Mendeley page before any use.** Both are freely downloadable from Mendeley Data. If the licence shown is CC BY 4.0, proceed with attribution. If anything more restrictive, stop.
+- **Publishing a dataset:** must consist only of our own scans + expert labels, synthetic data from CC0/CC-BY sources, and other CC-licensed sources. Provenance tracked per image from the start.
+
+Full licence table and rules: `docs/data.md`
 
 ## Maintainer
 
