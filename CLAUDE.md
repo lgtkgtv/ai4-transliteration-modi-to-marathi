@@ -86,8 +86,8 @@ CONTRIBUTING.md              # How to contribute data, the human-in-the-loop rul
 - `historyHulk/SynthMoDe` — synthetic Modi images rendered from the same Devanagari text via Modi fonts (public). 4,086 examples used.
 
 **Planned for Phase 2+ (not yet downloaded or used):**
-- **MODI-HHDoc** (3,350 raw document pages) — free on Mendeley `sg337vf6wn`; likely CC BY 4.0 (verify); annotate with expert labels → biggest lever for CER improvement
-- **MODI-HChar** (~576K isolated character images) — free on Mendeley `pk2zrt58pp`; likely CC BY 4.0 (verify); vision encoder pretraining to fix vowel-length confusion
+- **MODI-HHDoc** (3,350 raw document pages) — free on Mendeley `sg337vf6wn`; CC BY 4.0 confirmed; annotate with expert labels → biggest lever for CER improvement
+- **MODI-HChar** (~576K isolated character images) — free on Mendeley `pk2zrt58pp`; CC BY 4.0 confirmed; vision encoder pretraining to fix vowel-length confusion
 - **Aksharantar** (AI4Bharat, CC-BY/CC0) — free on HuggingFace; 26M word pairs; Marathi subset for synthetic Modi image generation (safe for training)
 - **Dakshina** (`mr`, CC BY-SA 4.0) — free on GitHub; use only as a Marathi word list for post-processing (not for training — ShareAlike clause)
 
@@ -111,7 +111,7 @@ Model: Qwen2.5-VL-3B-Instruct base, QLoRA adapter (rank 32, 4-bit NF4), trained 
 ## Licensing rules — always follow the safe path
 
 - **Dakshina (CC BY-SA 4.0): never use for training.** Use it as a Marathi word list at inference time only. Use Aksharantar (CC0/CC-BY) for any synthetic training data generation.
-- **MODI-HChar / MODI-HHDoc: verify licence on the Mendeley page before any use.** Both are freely downloadable from Mendeley Data. If the licence shown is CC BY 4.0, proceed with attribution. If anything more restrictive, stop.
+- **MODI-HChar / MODI-HHDoc: CC BY 4.0 confirmed (Mendeley Data, verified 2026-06-18).** Free to download, train on, and publish model weights. Do not redistribute the raw image files (authors' stated restriction).
 - **Publishing a dataset:** must consist only of our own scans + expert labels, synthetic data from CC0/CC-BY sources, and other CC-licensed sources. Provenance tracked per image from the start.
 
 Full licence table and rules: `docs/data.md`

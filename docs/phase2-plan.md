@@ -139,8 +139,8 @@ All four are freely downloadable — no subscription, no approval needed.
 
 | Dataset | Purpose in Phase 2 | Where to download | Licence |
 |---|---|---|---|
-| **MODI-HHDoc** | Annotation target (3,350 raw pages) | Mendeley `sg337vf6wn` | Likely CC BY 4.0 — verify on page |
-| **MODI-HChar** | Vision encoder pretraining (Stream D) | Mendeley `pk2zrt58pp` | Likely CC BY 4.0 — verify on page |
+| **MODI-HHDoc** | Annotation target (3,350 raw pages) | Mendeley `sg337vf6wn` | CC BY 4.0 ✅ confirmed 2026-06-18 |
+| **MODI-HChar** | Vision encoder pretraining (Stream D) | Mendeley `pk2zrt58pp` | CC BY 4.0 ✅ confirmed 2026-06-18 |
 | **Aksharantar** `mr` | Synthetic training image generation | HuggingFace `ai4bharat/Aksharantar` | CC0 / CC BY — safe for training |
 | **Dakshina** `mr` | Marathi word list for post-processing **only** | GitHub `google-research-datasets/dakshina` | CC BY-SA 4.0 — **never use for training** |
 | **ModiTrans-12B** | Pseudo-labelling (Stream C) | HuggingFace `historyHulk/ModiTrans-12B-Gemma-Teacher` | Gated — check current access status |

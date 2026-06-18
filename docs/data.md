@@ -28,12 +28,16 @@ Synthetic Modi images rendered from the same Devanagari text using Modi fonts. G
 
 | Dataset | Contents | Size | Access | Licence |
 |---|---|---|---|---|
-| **MODI-HChar** | Isolated characters, 57 classes, 170×170 px grayscale JPG | ~575,920 images | **Free** — Mendeley `pk2zrt58pp`; also IEEE DataPort `10.21227/v2kt-rr94` | Likely CC BY 4.0 — **verify on Mendeley page before use** |
-| **MODI-HHDoc** | Whole historical document page images (Peshwa-era) | 3,350 images (~6.83 GB) | **Free** — Mendeley `sg337vf6wn`; also IEEE DataPort `10.21227/1z10-w986` | Likely CC BY 4.0 — **verify on Mendeley page before use** |
+| **MODI-HChar** | Isolated characters, 57 classes, 170×170 px grayscale JPG | ~575,920 images | **Free** — Mendeley `pk2zrt58pp`; also IEEE DataPort `10.21227/v2kt-rr94` | **CC BY 4.0** ✅ confirmed 2026-06-18. Authors also state: research use only, no raw dataset redistribution. |
+| **MODI-HHDoc** | Whole historical document page images (Peshwa-era) | 3,350 images (~6.83 GB) | **Free** — Mendeley `sg337vf6wn`; also IEEE DataPort `10.21227/1z10-w986` | **CC BY 4.0** ✅ confirmed 2026-06-18. Authors also state: research use only, no raw dataset redistribution. |
 | **Handwritten MODI Characters** | Isolated character samples | — | IEEE DataPort `10.21227/z3gg-8b29` | IEEE DataPort subscription required |
 | **Handwritten Modi Lipi Barakhadi** | Consonant × vowel-sign combinations | — | IEEE DataPort | IEEE DataPort subscription required |
 
-Both MODI-HChar and MODI-HHDoc are freely downloadable from Mendeley Data (no subscription, no approval needed). Our earlier "research-only, no redistribution" characterisation was not confirmed by the actual dataset pages — Mendeley Data defaults to CC BY 4.0. **Verify the exact licence shown on each Mendeley page before training or publishing.**
+Both verified on Mendeley Data (2026-06-18). Freely downloadable, no subscription needed.
+Authors: Manisha Deshmukh, M. P. Patil, Satish Kolhe. Citation required — see Sources section below.
+
+The CC BY 4.0 licence permits training and publishing model weights. The authors' stated
+"no redistribution" applies to the raw image files — do not include them in any dataset we publish.
 
 MODI-HHDoc raw pages can be labelled by domain experts to grow Bucket A.
 
@@ -57,7 +61,7 @@ These are hard rules, not guidelines. When in doubt, don't use the dataset.
 | Source | Use for training? | Publish model? | Rule |
 |---|---|---|---|
 | MoDeTrans / SynthMoDe | ✅ Yes | ✅ Yes | Cite arXiv:2503.13060 |
-| MODI-HChar / MODI-HHDoc | ✅ Only after confirming CC BY 4.0 on Mendeley | ✅ Yes (CC BY) | **Must verify licence on Mendeley page before any use. Do not assume.** |
+| MODI-HChar / MODI-HHDoc | ✅ Yes — CC BY 4.0 confirmed | ✅ Yes — model weights OK | Do not redistribute the raw image files. Cite Deshmukh & Kolhe. |
 | Jadhav & Inamdar (IEEE) | ⛔ No | ⛔ No | Subscription-gated; licence unclear — skip |
 | Aksharantar (mined, CC0) | ✅ Yes | ✅ Yes | No restrictions — preferred for synthetic training data |
 | Aksharantar (manual, CC BY) | ✅ Yes | ✅ Yes | Attribution required |
@@ -65,7 +69,7 @@ These are hard rules, not guidelines. When in doubt, don't use the dataset.
 
 **Dakshina rule:** Extract a Marathi word list and use it at inference time (post-processing corrector). Never add Dakshina text to training data or synthetic image generation. Use Aksharantar instead for anything that touches the training pipeline.
 
-**MODI-HChar / MODI-HHDoc gate:** Before downloading or using either dataset, open the Mendeley page, read the licence field, and record it in `docs/data.md`. If the licence is not CC BY 4.0 or more permissive, stop and do not use.
+**MODI-HChar / MODI-HHDoc:** Licence confirmed CC BY 4.0 (verified 2026-06-18). Safe to use for training and to publish model weights. Do not redistribute the raw image files.
 
 **Publishing rule:** Any dataset we publish must consist entirely of: our own scans + expert labels, synthetic data from CC0/CC-BY sources, and other CC-licensed sources. Record provenance per image from the start. MODI-HChar and MODI-HHDoc (even if CC BY) must not be included in any redistributed dataset — they are inputs to our training pipeline only.
 
