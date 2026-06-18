@@ -19,6 +19,8 @@ scripts/                     # Training, evaluation, and analysis scripts
   06_evaluate.py             # CER evaluation on held-out test set
   07_train_with_synth.py     # QLoRA fine-tuning on real + SynthMoDe data
   08_error_analysis.py       # Character-level error breakdown and confusion pairs
+  09_infer.py                # CLI: single-image inference, prints Devanagari + optional CER
+  push_model_cards.py        # Uploads README model cards to HuggingFace adapter repos
   sample_images/             # 5 sample Modi JPGs used by the scripts
 samples/                     # 30 committed sample Modi images + index.json
 src/                         # Transliteration code (in progress)
@@ -26,9 +28,11 @@ assets/
   pipeline.excalidraw.svg    # Pipeline diagram placeholder (replace with real Excalidraw export)
 docs/
   data.md                    # Dataset catalogue with access and licence notes
-  quickstart.md              # Install and run on one image (placeholder)
-  model.md                   # Model card with metrics (fill when model is published)
-app.py                       # Gradio inference demo
+  quickstart.md              # Install and run on one image
+  model.md                   # Model card — CER results, tier breakdown, error patterns
+  phase1-report.md           # Full Phase 1 development report
+  inference-guide.md         # CLI vs Gradio trade-offs, WSL2 GPU hang, how to reproduce
+app.py                       # Gradio inference demo (includes WSL2 GPU pre-flight check)
 requirements.txt             # Python dependencies
 CONTRIBUTING.md              # How to contribute data, the human-in-the-loop rule
 ```
@@ -77,12 +81,15 @@ CONTRIBUTING.md              # How to contribute data, the human-in-the-loop rul
 
 ## Key datasets
 
-- `historyHulk/MoDeTrans` on Hugging Face — ~2,043 real Modi document images + expert-verified Devanagari, public
-- `historyHulk/SynthMoDe` on Hugging Face — synthetic Modi images from the same Devanagari text, public
-- **MODI-HChar** (~576K isolated character images, research-only, no redistribution) — best for vision encoder pretraining
-- **MODI-HHDoc** (3,350 raw document pages, research-only) — raw pages to add our own expert labels to
-- **Dakshina** (`mr`, CC BY-SA 4.0) — clean Marathi Devanagari text to render as synthetic Modi via fonts
-- **Aksharantar** (AI4Bharat, CC-BY/CC0) — 26M Indian-language word pairs
+**Used in Phase 1:**
+- `historyHulk/MoDeTrans` — ~2,043 real Modi document images + expert-verified Devanagari (public). Training split: 1,635 examples.
+- `historyHulk/SynthMoDe` — synthetic Modi images rendered from the same Devanagari text via Modi fonts (public). 4,086 examples used.
+
+**Planned for Phase 2+ (not yet downloaded or used):**
+- **MODI-HHDoc** (3,350 raw document pages, research-only) — annotate with expert labels → biggest lever for CER improvement
+- **MODI-HChar** (~576K isolated character images, research-only, no redistribution) — vision encoder pretraining to fix vowel-length confusion
+- **Dakshina** (`mr`, CC BY-SA 4.0) — clean Marathi Devanagari text to render as additional synthetic Modi training images
+- **Aksharantar** (AI4Bharat, CC-BY/CC0) — 26M Indian-language word pairs; Marathi subset for the same synthetic rendering purpose
 
 Full dataset catalogue with access links and licences: `docs/data.md`
 
