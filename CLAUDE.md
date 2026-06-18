@@ -86,10 +86,10 @@ CONTRIBUTING.md              # How to contribute data, the human-in-the-loop rul
 - `historyHulk/SynthMoDe` — synthetic Modi images rendered from the same Devanagari text via Modi fonts (public). 4,086 examples used.
 
 **Planned for Phase 2+ (not yet downloaded or used):**
-- **MODI-HHDoc** (3,350 raw document pages, research-only) — annotate with expert labels → biggest lever for CER improvement
-- **MODI-HChar** (~576K isolated character images, research-only, no redistribution) — vision encoder pretraining to fix vowel-length confusion
-- **Dakshina** (`mr`, CC BY-SA 4.0) — clean Marathi Devanagari text to render as additional synthetic Modi training images
-- **Aksharantar** (AI4Bharat, CC-BY/CC0) — 26M Indian-language word pairs; Marathi subset for the same synthetic rendering purpose
+- **MODI-HHDoc** (3,350 raw document pages) — free on Mendeley `sg337vf6wn`; likely CC BY 4.0 (verify); annotate with expert labels → biggest lever for CER improvement
+- **MODI-HChar** (~576K isolated character images) — free on Mendeley `pk2zrt58pp`; likely CC BY 4.0 (verify); vision encoder pretraining to fix vowel-length confusion
+- **Aksharantar** (AI4Bharat, CC-BY/CC0) — free on HuggingFace; 26M word pairs; Marathi subset for synthetic Modi image generation (safe for training)
+- **Dakshina** (`mr`, CC BY-SA 4.0) — free on GitHub; use only as a Marathi word list for post-processing (not for training — ShareAlike clause)
 
 Full dataset catalogue with access links and licences: `docs/data.md`
 

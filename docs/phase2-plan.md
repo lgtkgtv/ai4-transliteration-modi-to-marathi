@@ -135,14 +135,37 @@ Script: `scripts/14_pretrain_encoder.py` (to be created)
 
 ## Datasets for Phase 2
 
-| Dataset | Purpose | Status |
-|---|---|---|
-| MODI-HHDoc | Annotation target (3,350 raw pages) | Not yet downloaded |
-| Dakshina `mr` | Marathi word list for post-processing corrector | Not yet downloaded |
-| MODI-HChar | Vision encoder pretraining | Not yet downloaded |
-| ModiTrans-12B | Pseudo-labelling at scale | Awaiting gated access |
+All four are freely downloadable — no subscription, no approval needed.
+
+| Dataset | Purpose in Phase 2 | Where to download | Licence |
+|---|---|---|---|
+| **MODI-HHDoc** | Annotation target (3,350 raw pages) | Mendeley `sg337vf6wn` | Likely CC BY 4.0 — verify on page |
+| **MODI-HChar** | Vision encoder pretraining (Stream D) | Mendeley `pk2zrt58pp` | Likely CC BY 4.0 — verify on page |
+| **Aksharantar** `mr` | Synthetic training image generation | HuggingFace `ai4bharat/Aksharantar` | CC0 / CC BY — safe for training |
+| **Dakshina** `mr` | Marathi word list for post-processing only | GitHub `google-research-datasets/dakshina` | CC BY-SA 4.0 — **word list use only, not training** |
+| **ModiTrans-12B** | Pseudo-labelling (Stream C) | HuggingFace `historyHulk/ModiTrans-12B-Gemma-Teacher` | Gated — check current access status |
 
 None of these were used in Phase 1.
+
+---
+
+## If ModiTrans-12B access is denied
+
+Stream C is not a blocker. Two alternatives:
+
+**Option 1 — Manual annotation (Stream B as planned)**
+Human experts review model drafts and correct them. Slower than pseudo-labelling
+(weeks per batch vs. days) but produces higher-quality labels with no dependency
+on IIT Roorkee.
+
+**Option 2 — Self-training with confidence filtering**
+Run `lgtk/qwen25vl-3b-modi-synth-lora` on MODI-HHDoc pages twice independently.
+Pages where both runs produce near-identical output (edit distance < 5%) are
+high-confidence pseudo-labels worth keeping without human review.
+Pages where the runs diverge are flagged for human expert correction.
+This gives partial pseudo-labelling benefit using only our own model.
+
+Script to implement: `scripts/15_self_label_hhdoc.py` (to be created if needed).
 
 ---
 
@@ -151,5 +174,6 @@ None of these were used in Phase 1.
 Start with **A1** (post-processing corrector) while **A2** (era tagging) is in progress —
 both are fast and inform where to focus Stream B.
 Start **B1** (inventory MODI-HHDoc) in parallel.
+Check ModiTrans-12B access status before committing to Stream C or Option 2 above.
 Do not start Stream D until Stream B data shows diminishing returns —
 pretraining is only worth the effort if the data bottleneck is addressed first.

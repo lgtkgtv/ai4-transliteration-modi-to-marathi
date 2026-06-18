@@ -28,12 +28,14 @@ Synthetic Modi images rendered from the same Devanagari text using Modi fonts. G
 
 | Dataset | Contents | Size | Access | Licence |
 |---|---|---|---|---|
-| **MODI-HChar** | Isolated characters, 57 classes, 170×170 px grayscale JPG | ~575,920 images | IEEE DataPort `10.21227/v2kt-rr94`; Mendeley `pk2zrt58pp` | Research-only, **no redistribution** |
-| **MODI-HHDoc** | Whole historical document page images (Peshwa-era) | 3,350 images (~6.83 GB) | IEEE DataPort `10.21227/1z10-w986`; Mendeley `sg337vf6wn` | Research-only, **no redistribution** |
-| **Handwritten MODI Characters** | Isolated character samples | — | IEEE DataPort `10.21227/z3gg-8b29` | IEEE DataPort subscription |
-| **Handwritten Modi Lipi Barakhadi** | Consonant × vowel-sign combinations | — | IEEE DataPort | IEEE DataPort |
+| **MODI-HChar** | Isolated characters, 57 classes, 170×170 px grayscale JPG | ~575,920 images | **Free** — Mendeley `pk2zrt58pp`; also IEEE DataPort `10.21227/v2kt-rr94` | Likely CC BY 4.0 — **verify on Mendeley page before use** |
+| **MODI-HHDoc** | Whole historical document page images (Peshwa-era) | 3,350 images (~6.83 GB) | **Free** — Mendeley `sg337vf6wn`; also IEEE DataPort `10.21227/1z10-w986` | Likely CC BY 4.0 — **verify on Mendeley page before use** |
+| **Handwritten MODI Characters** | Isolated character samples | — | IEEE DataPort `10.21227/z3gg-8b29` | IEEE DataPort subscription required |
+| **Handwritten Modi Lipi Barakhadi** | Consonant × vowel-sign combinations | — | IEEE DataPort | IEEE DataPort subscription required |
 
-Mendeley mirrors of MODI-HChar and MODI-HHDoc are usually downloadable without a subscription. MODI-HHDoc raw pages can be labelled by our experts to grow Bucket A.
+Both MODI-HChar and MODI-HHDoc are freely downloadable from Mendeley Data (no subscription, no approval needed). Our earlier "research-only, no redistribution" characterisation was not confirmed by the actual dataset pages — Mendeley Data defaults to CC BY 4.0. **Verify the exact licence shown on each Mendeley page before training or publishing.**
+
+MODI-HHDoc raw pages can be labelled by domain experts to grow Bucket A.
 
 ---
 
@@ -50,15 +52,24 @@ Dakshina and Aksharantar Marathi text can be rendered through Modi fonts (Marath
 
 ## Licensing summary
 
-| Source | Train on it? | Redistribute it? | Note |
+| Source | Train on it? | Publish model trained on it? | Note |
 |---|---|---|---|
-| MoDeTrans / SynthMoDe | Yes | Check HF card | Cite arXiv:2503.13060 |
-| MODI-HChar / MODI-HHDoc | Yes (research) | **No** | Credit Deshmukh & Kolhe |
-| Jadhav & Inamdar (IEEE) | Yes (subscription) | **No** | Licence-bound |
-| Aksharantar | Yes | Yes (CC-BY/CC0) | Attribute |
-| Dakshina | Yes | Yes (CC BY-SA 4.0) | Share-alike — derivatives must use same licence |
+| MoDeTrans / SynthMoDe | Yes | Yes | Cite arXiv:2503.13060 |
+| MODI-HChar / MODI-HHDoc | Yes | Yes (if CC BY 4.0 confirmed) | **Verify licence on Mendeley page first**; credit Deshmukh & Kolhe |
+| Jadhav & Inamdar (IEEE) | Only with subscription | Check licence | Subscription-gated |
+| Aksharantar (mined) | Yes | Yes | CC0 — no restrictions |
+| Aksharantar (manual) | Yes | Yes | CC BY — attribution only |
+| Dakshina | **Word list only** (see below) | N/A | CC BY-SA 4.0 ShareAlike — avoid for model training |
 
-If we publish our own dataset it must be built from our own scans + expert labels, synthetic data from CC-licensed text, and CC-licensed sources — **not** from the no-redistribution Modi sets. Record provenance per item from the start.
+**Dakshina CC BY-SA 4.0 — use only for post-processing word list (Stream A1), not for training.**
+The ShareAlike clause means any derivative work must carry the same licence.
+Whether trained model weights count as a derivative work is legally unsettled.
+Safe path: extract a Marathi word list from Dakshina and use it at inference time;
+use Aksharantar (CC0/CC-BY) for any synthetic training image generation instead.
+
+If we publish our own dataset it must be built from: our own scans + expert labels,
+synthetic data from CC-licensed text, and CC-licensed sources.
+Record provenance per item from the start.
 
 ---
 
