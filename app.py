@@ -14,8 +14,8 @@ import gradio as gr
 
 # ── Model paths ──────────────────────────────────────────────────────────────
 MODEL_ID        = "Qwen/Qwen2.5-VL-3B-Instruct"
-HF_ADAPTER_REPO = "lgtk/qwen25vl-3b-modi-lora"          # HuggingFace Hub fallback
-LOCAL_ADAPTER   = "models/qwen25vl-3b-modi-lora/final_adapter"
+HF_ADAPTER_REPO = "lgtk/qwen25vl-3b-modi-synth-lora"    # HuggingFace Hub fallback
+LOCAL_ADAPTER   = "models/qwen25vl-3b-modi-synth-lora/final_adapter"
 ADAPTER_DIR     = LOCAL_ADAPTER if Path(LOCAL_ADAPTER).exists() else HF_ADAPTER_REPO
 
 PROMPT = (
@@ -69,8 +69,8 @@ with gr.Blocks(title="मोडी ते मराठी") as demo:
 
 Upload a **handwritten Modi script** image to get its **Devanagari (Marathi) transliteration**.
 
-**Model:** Qwen2.5-VL-3B fine-tuned with QLoRA on MoDeTrans · **Test CER: 0.332**
-_(A CER of 0.0 is perfect; 0.332 means ~33% of characters need expert correction)_
+**Model:** Qwen2.5-VL-3B fine-tuned with QLoRA on MoDeTrans + SynthMoDe · **Test CER: 0.328**
+_(A CER of 0.0 is perfect; 0.328 means ~33% of characters need expert correction)_
 """)
 
     with gr.Row():
