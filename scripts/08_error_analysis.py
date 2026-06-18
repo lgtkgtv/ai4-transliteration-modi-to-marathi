@@ -14,11 +14,18 @@ Analysis sections:
   6. Representative examples per quality tier
 """
 
-import json, difflib, collections
+import argparse, json, difflib, collections
 from pathlib import Path
 
-REPORT_IN  = Path("results/evaluation_report.json")
-REPORT_OUT = Path("results/error_analysis_report.json")
+parser = argparse.ArgumentParser(description="Error analysis on an evaluation_report.json")
+parser.add_argument("--input",  "-i", default="results/evaluation_report.json",
+                    help="Path to evaluation_report.json  (default: results/evaluation_report.json)")
+parser.add_argument("--output", "-o", default="results/error_analysis_report.json",
+                    help="Path to write analysis JSON  (default: results/error_analysis_report.json)")
+args = parser.parse_args()
+
+REPORT_IN  = Path(args.input)
+REPORT_OUT = Path(args.output)
 
 # Known confusable character groups from domain knowledge
 KNOWN_CONFUSABLES = [

@@ -6,11 +6,70 @@ Run: .venv/bin/python app.py
 Then open: http://localhost:7860
 """
 
-import torch, json
+import subprocess, sys, torch, json
 from pathlib import Path
 from transformers import Qwen2_5_VLForConditionalGeneration, AutoProcessor, BitsAndBytesConfig
 from peft import PeftModel
 import gradio as gr
+
+
+# ── WSL2 GPU pre-flight check ─────────────────────────────────────────────────
+def _gpu_preflight():
+    """Fail fast if a previous GPU process would cause CUDA to hang on WSL2."""
+    try:
+        proc = subprocess.run(
+            ["nvidia-smi", "--query-compute-apps=pid,used_memory,name",
+             "--format=csv,noheader"],
+            capture_output=True, text=True, timeout=10,
+        )
+    except FileNotFoundError:
+        print("WARNING: nvidia-smi not found — skipping GPU check.")
+        return
+    except subprocess.TimeoutExpired:
+        print("WARNING: nvidia-smi timed out — GPU may be busy. Proceeding cautiously.")
+        return
+
+    occupied = [l.strip() for l in proc.stdout.strip().splitlines() if l.strip()]
+    if occupied:
+        print("\n" + "=" * 62)
+        print("ERROR: GPU is occupied — app.py will hang if you continue.")
+        print("=" * 62)
+        print("Running CUDA processes:")
+        for line in occupied:
+            print(f"  {line}")
+        print()
+        print("On WSL2, a leftover GPU process blocks CUDA initialisation,")
+        print("causing this app to hang indefinitely during model load.")
+        print()
+        print("Run these kill commands, then retry:")
+        for line in occupied:
+            pid = line.split(",")[0].strip()
+            if pid.isdigit():
+                print(f"  kill {pid}")
+        print("=" * 62 + "\n")
+        sys.exit(1)
+
+    # Model needs ~3–4 GB in 4-bit mode; require 5 GB free to have headroom
+    try:
+        mem = subprocess.run(
+            ["nvidia-smi", "--query-gpu=memory.free", "--format=csv,noheader,nounits"],
+            capture_output=True, text=True, timeout=10,
+        )
+        free_gb = int(mem.stdout.strip().splitlines()[0].strip()) / 1024
+        if free_gb < 5.0:
+            print("\n" + "=" * 62)
+            print(f"ERROR: Only {free_gb:.1f} GB GPU memory free (need ≥5 GB).")
+            print("=" * 62)
+            print("Close other GPU-using applications, then retry.")
+            print("=" * 62 + "\n")
+            sys.exit(1)
+        print(f"GPU check OK — {free_gb:.1f} GB free.")
+    except Exception:
+        pass  # memory check is best-effort
+
+
+_gpu_preflight()
+
 
 # ── Model paths ──────────────────────────────────────────────────────────────
 MODEL_ID        = "Qwen/Qwen2.5-VL-3B-Instruct"
